@@ -1,0 +1,385 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>QuickBasket Analytics Dashboard - FreshMart Insights</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+    <!-- Header Section -->
+    <header class="header">
+        <div class="container">
+            <h1 class="header__title">QuickBasket Analytics Dashboard - FreshMart Insights</h1>
+            <div class="metrics-grid">
+                <div class="metric-card">
+                    <div class="metric-card__value">1,117</div>
+                    <div class="metric-card__label">Total Orders</div>
+                </div>
+                <div class="metric-card">
+                    <div class="metric-card__value">381</div>
+                    <div class="metric-card__label">Unique Customers</div>
+                </div>
+                <div class="metric-card">
+                    <div class="metric-card__value">9.8</div>
+                    <div class="metric-card__label">Average Basket Size</div>
+                </div>
+                <div class="metric-card">
+                    <div class="metric-card__value">Banana</div>
+                    <div class="metric-card__subvalue">165 orders</div>
+                    <div class="metric-card__label">Top Product</div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="main">
+        <div class="container">
+            <!-- Tab Navigation -->
+            <nav class="tabs">
+                <button class="tab-btn active" data-tab="overview">Overview</button>
+                <button class="tab-btn" data-tab="product-analysis">Product Analysis</button>
+                <button class="tab-btn" data-tab="customer-behavior">Customer Behavior</button>
+                <button class="tab-btn" data-tab="recommendations">Business Recommendations</button>
+            </nav>
+
+            <!-- Tab Content -->
+            <div class="tab-content">
+                <!-- Overview Tab -->
+                <div id="overview" class="tab-panel active">
+                    <div class="dashboard-grid">
+                        <div class="card">
+                            <div class="card__header">
+                                <h3>Top 10 Products</h3>
+                            </div>
+                            <div class="card__body">
+                                <div class="chart-wrapper">
+                                    <img src="https://ppl-ai-code-interpreter-files.s3.amazonaws.com/web/direct-files/83eff9d6497a58689d13d2f1cd50c0d8/a975e192-de5c-4bb9-928c-486de1e4698c/0fd1c4b2.png" alt="Top 15 Products Chart" class="chart-image" loading="lazy" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+                                    <div class="chart-fallback" style="display: none;">
+                                        <div style="position: relative; height: 400px;">
+                                            <canvas id="topProductsChart"></canvas>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="card">
+                            <div class="card__header">
+                                <h3>Department Distribution</h3>
+                            </div>
+                            <div class="card__body">
+                                <div class="chart-wrapper">
+                                    <img src="https://ppl-ai-code-interpreter-files.s3.amazonaws.com/web/direct-files/83eff9d6497a58689d13d2f1cd50c0d8/88ab39ef-d2f5-4239-bb0e-ea517e906779/1abb3578.png" alt="Department Orders Pie Chart" class="chart-image" loading="lazy" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+                                    <div class="chart-fallback" style="display: none;">
+                                        <div style="position: relative; height: 400px;">
+                                            <canvas id="departmentChart"></canvas>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="card full-width">
+                            <div class="card__header">
+                                <h3>Peak Ordering Hours</h3>
+                            </div>
+                            <div class="card__body">
+                                <div style="position: relative; height: 400px;">
+                                    <canvas id="peakHoursChart"></canvas>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Product Analysis Tab -->
+                <div id="product-analysis" class="tab-panel">
+                    <div class="dashboard-grid">
+                        <div class="card full-width">
+                            <div class="card__header">
+                                <h3>Top Products Performance</h3>
+                            </div>
+                            <div class="card__body">
+                                <div class="table-container">
+                                    <table class="data-table" id="topProductsTable">
+                                        <thead>
+                                            <tr>
+                                                <th data-sort="name">Product Name</th>
+                                                <th data-sort="orders">Order Count</th>
+                                                <th data-sort="percentage">Market Share</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody id="topProductsBody">
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="card">
+                            <div class="card__header">
+                                <h3>Reorder Rate Analysis</h3>
+                            </div>
+                            <div class="card__body">
+                                <div class="table-container">
+                                    <table class="data-table" id="reorderTable">
+                                        <thead>
+                                            <tr>
+                                                <th>Product Name</th>
+                                                <th>Reorder Rate</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody id="reorderBody">
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="card">
+                            <div class="card__header">
+                                <h3>Product Combinations Network</h3>
+                            </div>
+                            <div class="card__body">
+                                <div class="chart-wrapper">
+                                    <img src="https://ppl-ai-code-interpreter-files.s3.amazonaws.com/web/direct-files/83eff9d6497a58689d13d2f1cd50c0d8/2d73f299-b002-424c-9abc-d4c6959aac1c/83e28bb7.png" alt="Product Network Chart" class="chart-image" loading="lazy" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+                                    <div class="chart-fallback" style="display: none;">
+                                        <div class="combinations-list">
+                                            <h4>Top Product Combinations</h4>
+                                            <div class="combination-item">
+                                                <strong>Organic Baby Spinach + Banana</strong>
+                                                <span class="combination-count">24 co-purchases</span>
+                                            </div>
+                                            <div class="combination-item">
+                                                <strong>Banana + Large Lemon</strong>
+                                                <span class="combination-count">23 co-purchases</span>
+                                            </div>
+                                            <div class="combination-item">
+                                                <strong>Bag of Organic Bananas + Organic Baby Spinach</strong>
+                                                <span class="combination-count">21 co-purchases</span>
+                                            </div>
+                                            <div class="combination-item">
+                                                <strong>Bag of Organic Bananas + Organic Strawberries</strong>
+                                                <span class="combination-count">20 co-purchases</span>
+                                            </div>
+                                            <div class="combination-item">
+                                                <strong>Banana + Organic Avocado</strong>
+                                                <span class="combination-count">20 co-purchases</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Customer Behavior Tab -->
+                <div id="customer-behavior" class="tab-panel">
+                    <div class="dashboard-grid">
+                        <div class="card full-width">
+                            <div class="card__header">
+                                <h3>Order Timing Heatmap</h3>
+                            </div>
+                            <div class="card__body">
+                                <div class="chart-wrapper">
+                                    <img src="https://ppl-ai-code-interpreter-files.s3.amazonaws.com/web/direct-files/83eff9d6497a58689d13d2f1cd50c0d8/0333b55f-e0a5-46c7-a132-48265f4f3afa/2a2290b0.png" alt="Order Patterns Heatmap" class="chart-image" loading="lazy" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+                                    <div class="chart-fallback" style="display: none;">
+                                        <div class="heatmap-summary">
+                                            <h4>Peak Shopping Patterns</h4>
+                                            <div class="pattern-grid">
+                                                <div class="pattern-item">
+                                                    <strong>Peak Days:</strong>
+                                                    <span>Monday, Sunday, Friday</span>
+                                                </div>
+                                                <div class="pattern-item">
+                                                    <strong>Peak Hours:</strong>
+                                                    <span>11 AM - 4 PM</span>
+                                                </div>
+                                                <div class="pattern-item">
+                                                    <strong>Busiest Time:</strong>
+                                                    <span>Sunday 12 PM</span>
+                                                </div>
+                                                <div class="pattern-item">
+                                                    <strong>Quietest Time:</strong>
+                                                    <span>Early morning & late evening</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="card">
+                            <div class="card__header">
+                                <h3>Basket Size Distribution</h3>
+                            </div>
+                            <div class="card__body">
+                                <div style="position: relative; height: 300px;">
+                                    <canvas id="basketSizeChart"></canvas>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="card">
+                            <div class="card__header">
+                                <h3>Customer Loyalty Metrics</h3>
+                            </div>
+                            <div class="card__body">
+                                <div class="loyalty-metrics">
+                                    <div class="loyalty-stat">
+                                        <div class="loyalty-stat__value">2.9</div>
+                                        <div class="loyalty-stat__label">Avg Orders per Customer</div>
+                                    </div>
+                                    <div class="loyalty-stat">
+                                        <div class="loyalty-stat__value">68%</div>
+                                        <div class="loyalty-stat__label">Repeat Customer Rate</div>
+                                    </div>
+                                    <div class="loyalty-stat">
+                                        <div class="loyalty-stat__value">14.2</div>
+                                        <div class="loyalty-stat__label">Avg Days Between Orders</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Business Recommendations Tab -->
+                <div id="recommendations" class="tab-panel">
+                    <div class="dashboard-grid">
+                        <div class="card">
+                            <div class="card__header">
+                                <h3>Inventory Priority List</h3>
+                            </div>
+                            <div class="card__body">
+                                <div class="priority-list">
+                                    <div class="priority-item">
+                                        <span class="priority-rank">1</span>
+                                        <span class="priority-product">Banana</span>
+                                        <span class="status status--success">High Demand</span>
+                                    </div>
+                                    <div class="priority-item">
+                                        <span class="priority-rank">2</span>
+                                        <span class="priority-product">Bag of Organic Bananas</span>
+                                        <span class="status status--success">High Demand</span>
+                                    </div>
+                                    <div class="priority-item">
+                                        <span class="priority-rank">3</span>
+                                        <span class="priority-product">Organic Baby Spinach</span>
+                                        <span class="status status--warning">Medium Demand</span>
+                                    </div>
+                                    <div class="priority-item">
+                                        <span class="priority-rank">4</span>
+                                        <span class="priority-product">Organic Strawberries</span>
+                                        <span class="status status--warning">Medium Demand</span>
+                                    </div>
+                                    <div class="priority-item">
+                                        <span class="priority-rank">5</span>
+                                        <span class="priority-product">Large Lemon</span>
+                                        <span class="status status--info">Standard Demand</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="card">
+                            <div class="card__header">
+                                <h3>Bundle Opportunities</h3>
+                            </div>
+                            <div class="card__body">
+                                <div class="bundle-opportunities">
+                                    <div class="bundle-card">
+                                        <h4>Smoothie Essentials</h4>
+                                        <p>Banana + Organic Baby Spinach</p>
+                                        <div class="bundle-stats">
+                                            <span class="bundle-frequency">24 co-purchases</span>
+                                        </div>
+                                    </div>
+                                    <div class="bundle-card">
+                                        <h4>Cooking Basics</h4>
+                                        <p>Large Lemon + Organic Avocado</p>
+                                        <div class="bundle-stats">
+                                            <span class="bundle-frequency">20 co-purchases</span>
+                                        </div>
+                                    </div>
+                                    <div class="bundle-card">
+                                        <h4>Premium Organic</h4>
+                                        <p>Bag of Organic Bananas + Organic Strawberries</p>
+                                        <div class="bundle-stats">
+                                            <span class="bundle-frequency">20 co-purchases</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="card">
+                            <div class="card__header">
+                                <h3>Promotional Timing</h3>
+                            </div>
+                            <div class="card__body">
+                                <div class="timing-recommendations">
+                                    <div class="timing-section">
+                                        <h4>Peak Hours</h4>
+                                        <div class="timing-tags">
+                                            <span class="timing-tag">11:00 AM</span>
+                                            <span class="timing-tag">12:00 PM</span>
+                                            <span class="timing-tag">3:00 PM</span>
+                                            <span class="timing-tag">4:00 PM</span>
+                                        </div>
+                                    </div>
+                                    <div class="timing-section">
+                                        <h4>Peak Days</h4>
+                                        <div class="timing-tags">
+                                            <span class="timing-tag">Monday (18.6%)</span>
+                                            <span class="timing-tag">Sunday (18.3%)</span>
+                                            <span class="timing-tag">Friday (14.0%)</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="card full-width">
+                            <div class="card__header">
+                                <h3>Revenue Optimization Strategies</h3>
+                            </div>
+                            <div class="card__body">
+                                <div class="strategy-grid">
+                                    <div class="strategy-card">
+                                        <h4>Fresh Produce Focus</h4>
+                                        <p>30.1% of orders are from produce. Expand organic options and seasonal offerings to capture more market share.</p>
+                                        <div class="strategy-impact">Expected Impact: +15% revenue</div>
+                                    </div>
+                                    <div class="strategy-card">
+                                        <h4>Cross-Selling Optimization</h4>
+                                        <p>Implement smart recommendations based on strong product associations like Banana + Spinach combinations.</p>
+                                        <div class="strategy-impact">Expected Impact: +8% basket size</div>
+                                    </div>
+                                    <div class="strategy-card">
+                                        <h4>Peak Time Promotions</h4>
+                                        <p>Target promotional campaigns during 11 AM - 4 PM window when order volume is highest.</p>
+                                        <div class="strategy-impact">Expected Impact: +12% engagement</div>
+                                    </div>
+                                    <div class="strategy-card">
+                                        <h4>Loyalty Program Enhancement</h4>
+                                        <p>Focus on high-reorder rate products to build customer retention and increase lifetime value.</p>
+                                        <div class="strategy-impact">Expected Impact: +20% retention</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <script src="app.js"></script>
+</body>
+</html>

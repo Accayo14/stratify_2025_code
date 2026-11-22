@@ -1,0 +1,108 @@
+{
+  "key_metrics": {
+    "total_orders": 1117,
+    "unique_customers": 381,
+    "unique_products": 4857,
+    "avg_basket_size": 9.85,
+    "reorder_interval_days": 10.2
+  },
+  "top_products": [
+    {
+      "product_name": "Banana",
+      "order_count": 165
+    },
+    {
+      "product_name": "Bag of Organic Bananas",
+      "order_count": 142
+    },
+    {
+      "product_name": "Organic Baby Spinach",
+      "order_count": 91
+    },
+    {
+      "product_name": "Organic Strawberries",
+      "order_count": 88
+    },
+    {
+      "product_name": "Large Lemon",
+      "order_count": 70
+    },
+    {
+      "product_name": "Organic Avocado",
+      "order_count": 64
+    },
+    {
+      "product_name": "Organic Hass Avocado",
+      "order_count": 64
+    },
+    {
+      "product_name": "Strawberries",
+      "order_count": 60
+    },
+    {
+      "product_name": "Limes",
+      "order_count": 51
+    },
+    {
+      "product_name": "Organic Baby Carrots",
+      "order_count": 39
+    }
+  ],
+  "bundle_opportunities": [
+    [
+      "Banana + Organic Baby Spinach",
+      "24 co-purchases"
+    ],
+    [
+      "Bag of Organic Bananas + Organic Strawberries",
+      "20 co-purchases"
+    ],
+    [
+      "Organic Strawberries + Organic Baby Spinach",
+      "15 co-purchases"
+    ],
+    [
+      "Banana + Large Lemon",
+      "23 co-purchases"
+    ],
+    [
+      "Large Lemon + Organic Avocado",
+      "15 co-purchases"
+    ]
+  ],
+  "optimal_timing": {
+    "peak_hours": [
+      "11:00",
+      "16:00",
+      "12:00"
+    ],
+    "peak_days": [
+      "Monday",
+      "Sunday",
+      "Friday"
+    ],
+    "reengagement_days": 12
+  },
+  "department_performance": [
+    {
+      "department": "produce",
+      "order_count": 3315
+    },
+    {
+      "department": "dairy eggs",
+      "order_count": 1808
+    },
+    {
+      "department": "beverages",
+      "order_count": 921
+    },
+    {
+      "department": "snacks",
+      "order_count": 903
+    },
+    {
+      "department": "frozen",
+      "order_count": 781
+    }
+  ]
+}

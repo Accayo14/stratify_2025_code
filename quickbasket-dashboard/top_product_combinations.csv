@@ -1,0 +1,21 @@
+product_1,product_2,co_occurrence_count,product_1_name,product_2_name
+21903,24852,24,Organic Baby Spinach,Banana
+24852,47626,23,Banana,Large Lemon
+13176,21903,21,Bag of Organic Bananas,Organic Baby Spinach
+13176,21137,20,Bag of Organic Bananas,Organic Strawberries
+24852,47766,20,Banana,Organic Avocado
+21137,24852,19,Organic Strawberries,Banana
+13176,47209,19,Bag of Organic Bananas,Organic Hass Avocado
+16797,24852,17,Strawberries,Banana
+24852,28204,16,Banana,Organic Fuji Apple
+21137,21903,15,Organic Strawberries,Organic Baby Spinach
+47626,47766,15,Large Lemon,Organic Avocado
+4605,24852,15,Yellow Onions,Banana
+26209,47626,15,Limes,Large Lemon
+13176,42265,14,Bag of Organic Bananas,Organic Baby Carrots
+13176,45007,13,Bag of Organic Bananas,Organic Zucchini
+21137,47209,13,Organic Strawberries,Organic Hass Avocado
+24852,26209,13,Banana,Limes
+13176,22935,12,Bag of Organic Bananas,Organic Yellow Onion
+21137,27845,12,Organic Strawberries,Organic Whole Milk
+13176,27966,12,Bag of Organic Bananas,Organic Raspberries
