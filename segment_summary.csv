@@ -1,0 +1,5 @@
+segment,customers,avg_frequency,avg_total_items,avg_basket_size,avg_days_between
+Big Spenders,15289,7.3,125.8,18.59,18.24
+Champions,88526,28.58,307.81,11.59,11.61
+Low Value,80192,5.76,41.84,8.08,19.22
+Loyal Customers,22202,14.32,58.15,4.54,15.2
